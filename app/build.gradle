@@ -6,6 +6,21 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
 }
 
+def getProperty(String fileName, String propName) {
+    def propsFile = rootProject.file(fileName)
+    if (propsFile.exists()) {
+        def props = new Properties()
+        props.load(new FileInputStream(propsFile))
+        if (props[propName] != null) {
+            return props[propName]
+        } else {
+            print("No such property " + propName + " in file " + fileName)
+        }
+    } else {
+        print(fileName + " does not exist!")
+    }
+}
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -18,6 +33,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "NEWS_API_KEY", "\"${getProperty("local.properties", "news_api_key")}\""
     }
 
     buildTypes {
@@ -61,4 +77,5 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation "io.coil-kt:coil:$coil_version"
     implementation "com.makeramen:roundedimageview:$rounded_image_view_version"
+    implementation "com.jakewharton.timber:timber:$timber_version"
 }
