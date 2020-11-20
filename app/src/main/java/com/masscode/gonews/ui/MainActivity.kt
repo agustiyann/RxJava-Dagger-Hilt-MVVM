@@ -1,7 +1,8 @@
-package com.masscode.gonews
+package com.masscode.gonews.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.masscode.gonews.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
