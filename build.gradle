@@ -5,13 +5,15 @@ buildscript {
     ext.lifecycle_version           = "2.2.0"
     ext.retrofit_version            = "2.9.0"
     ext.moshi_version               = "1.9.3"
-    ext.room_version                = "2.2.5"
+    ext.room_version                = "2.3.0-alpha03"
     ext.nav_version                 = "2.3.1"
     ext.logging_interceptor_version = "4.8.0"
     ext.coil_version                = "1.0.0"
     ext.rounded_image_view_version  = "2.3.0"
     ext.timber_version              = "4.7.1"
     ext.multidex_version            = "2.0.1"
+    ext.rxjava_version              = "3.0.7"
+    ext.rxandroid_version           = "3.0.0"
     repositories {
         google()
         jcenter()

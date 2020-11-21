@@ -1,8 +1,8 @@
 package com.masscode.gonews.data.source.local
 
-import androidx.lifecycle.LiveData
 import com.masscode.gonews.data.source.local.entity.ArticleEntity
 import com.masscode.gonews.data.source.local.room.ArticleDao
+import io.reactivex.rxjava3.core.Flowable
 
 class LocalDataSource private constructor(private val articleDao: ArticleDao) {
 
@@ -15,7 +15,7 @@ class LocalDataSource private constructor(private val articleDao: ArticleDao) {
             }
     }
 
-    fun getAllArticles(): LiveData<List<ArticleEntity>> = articleDao.getAllArticles()
+    fun getAllArticles(): Flowable<List<ArticleEntity>> = articleDao.getAllArticles()
 
     fun insertArticles(articleList: List<ArticleEntity>) = articleDao.insertArticles(articleList)
 }

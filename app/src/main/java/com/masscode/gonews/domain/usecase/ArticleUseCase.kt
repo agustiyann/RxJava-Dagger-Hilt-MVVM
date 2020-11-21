@@ -1,9 +1,9 @@
 package com.masscode.gonews.domain.usecase
 
-import androidx.lifecycle.LiveData
 import com.masscode.gonews.data.Resource
 import com.masscode.gonews.domain.model.Article
+import io.reactivex.rxjava3.core.Flowable
 
 interface ArticleUseCase {
-    fun getAllArticles(): LiveData<Resource<List<Article>>>
+    fun getAllArticles(): Flowable<Resource<List<Article>>>
 }

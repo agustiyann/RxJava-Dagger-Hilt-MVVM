@@ -1,13 +1,13 @@
 package com.masscode.gonews.data.source.remote
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.masscode.gonews.data.source.remote.network.ApiResponse
 import com.masscode.gonews.data.source.remote.network.ApiService
 import com.masscode.gonews.data.source.remote.response.ArticleResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.BackpressureStrategy
+import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.rxjava3.subjects.PublishSubject
 import timber.log.Timber
 
 class RemoteDatasource private constructor(private val apiService: ApiService) {
@@ -22,26 +22,21 @@ class RemoteDatasource private constructor(private val apiService: ApiService) {
             }
     }
 
-    fun getAllArticles(): LiveData<ApiResponse<List<ArticleResponse>>> {
-        val resultData = MutableLiveData<ApiResponse<List<ArticleResponse>>>()
+    fun getAllArticles(): Flowable<ApiResponse<List<ArticleResponse>>> {
+        val resultData = PublishSubject.create<ApiResponse<List<ArticleResponse>>>()
         val client = apiService.getTopHeadlines()
 
-        client.enqueue(object : Callback<List<ArticleResponse>> {
-            override fun onResponse(
-                call: Call<List<ArticleResponse>>,
-                response: Response<List<ArticleResponse>>
-            ) {
-                val dataArray = response.body()
-                resultData.value =
-                    if (dataArray != null) ApiResponse.Success(dataArray) else ApiResponse.Empty
-            }
+        client
+            .subscribeOn(Schedulers.computation())
+            .observeOn(AndroidSchedulers.mainThread())
+            .take(1)
+            .subscribe({ response ->
+                resultData.onNext(if (response.isNotEmpty()) ApiResponse.Success(response) else ApiResponse.Empty)
+            }, { error ->
+                resultData.onNext(ApiResponse.Error(error.message.toString()))
+                Timber.e(error.toString())
+            })
 
-            override fun onFailure(call: Call<List<ArticleResponse>>, t: Throwable) {
-                resultData.value = ApiResponse.Error(t.message.toString())
-                Timber.e(t.message.toString())
-            }
-        })
-
-        return resultData
+        return resultData.toFlowable(BackpressureStrategy.BUFFER)
     }
 }
