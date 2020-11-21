@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Go News</string>
-    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet beatae debitis doloribus dolorum ipsa itaque nesciunt, placeat provident qui quo reiciendis unde voluptatibus? Adipisci debitis earum hic nam sapiente!</string>
+    <string name="app_name">RxJava Dagger Hilt MVVM</string>
+    <string name="something_wrong">Oops.. something went wrong</string>
 </resources>

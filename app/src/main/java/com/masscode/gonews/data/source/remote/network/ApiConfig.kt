@@ -21,7 +21,7 @@ object ApiConfig {
         val moshi: Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://newsapi.org/v2/")
+            .baseUrl("https://my-json-server.typicode.com/agustiyann/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(provideOkHttpClient())
             .build()

@@ -31,8 +31,8 @@ class ArticleRepository private constructor(
             }
     }
 
-    override fun getAllArticles(): LiveData<Resource<List<Article>>> {
-        return object : NetworkBoundResource<List<Article>, List<ArticleResponse>>(appExecutors) {
+    override fun getAllArticles(): LiveData<Resource<List<Article>>> =
+        object : NetworkBoundResource<List<Article>, List<ArticleResponse>>(appExecutors) {
             override fun loadFromDB(): LiveData<List<Article>> {
                 return Transformations.map(localDataSource.getAllArticles()) {
                     DataMapper.mapEntitiesToDomain(it)
@@ -40,12 +40,11 @@ class ArticleRepository private constructor(
             }
 
             override fun shouldFetch(data: List<Article>?): Boolean =
-//                data == null || data.isEmpty()
-                true
+                data == null || data.isEmpty()
+//                true
 
-            override fun createCall(): LiveData<ApiResponse<List<ArticleResponse>>> {
-                return remoteDatasource.getAllArticles()
-            }
+            override fun createCall(): LiveData<ApiResponse<List<ArticleResponse>>> =
+                remoteDatasource.getAllArticles()
 
             override fun saveCallResult(data: List<ArticleResponse>) {
                 val articleList = DataMapper.mapResponsesToEntities(data)
@@ -53,5 +52,4 @@ class ArticleRepository private constructor(
             }
 
         }.asLiveData()
-    }
 }

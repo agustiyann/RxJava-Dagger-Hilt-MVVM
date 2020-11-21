@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.masscode.gonews.data.source.remote.network.ApiResponse
 import com.masscode.gonews.data.source.remote.network.ApiService
 import com.masscode.gonews.data.source.remote.response.ArticleResponse
-import com.masscode.gonews.data.source.remote.response.ListArticleResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,17 +26,17 @@ class RemoteDatasource private constructor(private val apiService: ApiService) {
         val resultData = MutableLiveData<ApiResponse<List<ArticleResponse>>>()
         val client = apiService.getTopHeadlines()
 
-        client.enqueue(object : Callback<ListArticleResponse> {
+        client.enqueue(object : Callback<List<ArticleResponse>> {
             override fun onResponse(
-                call: Call<ListArticleResponse>,
-                response: Response<ListArticleResponse>
+                call: Call<List<ArticleResponse>>,
+                response: Response<List<ArticleResponse>>
             ) {
-                val dataArray = response.body()?.articles
+                val dataArray = response.body()
                 resultData.value =
                     if (dataArray != null) ApiResponse.Success(dataArray) else ApiResponse.Empty
             }
 
-            override fun onFailure(call: Call<ListArticleResponse>, t: Throwable) {
+            override fun onFailure(call: Call<List<ArticleResponse>>, t: Throwable) {
                 resultData.value = ApiResponse.Error(t.message.toString())
                 Timber.e(t.message.toString())
             }

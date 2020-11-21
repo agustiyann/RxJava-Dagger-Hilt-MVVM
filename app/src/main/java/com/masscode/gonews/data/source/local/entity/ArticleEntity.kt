@@ -1,27 +1,26 @@
 package com.masscode.gonews.data.source.local.entity
 
+import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "article")
+@Entity(tableName = "users")
 data class ArticleEntity(
     @PrimaryKey
-    @ColumnInfo(name = "title")
-    val title: String,
+    @NonNull
+    @ColumnInfo(name = "id")
+    val id: Int,
 
-    @ColumnInfo(name = "author")
-    val author: String,
+    @ColumnInfo(name = "username")
+    val username: String,
 
-    @ColumnInfo(name = "description")
-    val description: String,
+    @ColumnInfo(name = "avatar")
+    val avatar: String,
 
-    @ColumnInfo(name = "url")
-    val url: String,
+    @ColumnInfo(name = "job")
+    val job: String,
 
-    @ColumnInfo(name = "image")
-    val image: String,
-
-    @ColumnInfo(name = "date")
-    val date: String
+    @ColumnInfo(name = "slogan")
+    val slogan: String
 )

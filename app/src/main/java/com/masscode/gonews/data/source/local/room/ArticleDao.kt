@@ -10,7 +10,7 @@ import com.masscode.gonews.data.source.local.entity.ArticleEntity
 @Dao
 interface ArticleDao {
 
-    @Query("SELECT * FROM article")
+    @Query("SELECT * FROM users")
     fun getAllArticles(): LiveData<List<ArticleEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
