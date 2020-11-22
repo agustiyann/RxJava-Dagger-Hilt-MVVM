@@ -6,7 +6,6 @@ buildscript {
     ext.retrofit_version            = "2.9.0"
     ext.moshi_version               = "1.9.3"
     ext.room_version                = "2.3.0-alpha03"
-    ext.nav_version                 = "2.3.1"
     ext.logging_interceptor_version = "4.8.0"
     ext.coil_version                = "1.0.0"
     ext.rounded_image_view_version  = "2.3.0"
@@ -21,8 +20,6 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

@@ -11,7 +11,7 @@ import com.masscode.gonews.domain.model.Article
 class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ListViewHolder>() {
 
     private var listData = ArrayList<Article>()
-    val onItemClick: ((Article) -> Unit)? = null
+    var onItemClick: ((Article) -> Unit)? = null
 
     fun setData(newListData: List<Article>?) {
         if (newListData == null) return
@@ -34,12 +34,13 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ListViewHolder>() {
         return listData.size
     }
 
-    class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemListNewsBinding.bind(itemView)
         fun bind(data: Article) {
             with(binding) {
                 article = data
                 executePendingBindings()
+                root.setOnClickListener { onItemClick?.invoke(listData[adapterPosition]) }
             }
         }
     }

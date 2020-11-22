@@ -1,5 +1,6 @@
 package com.masscode.gonews.ui.home
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,8 @@ import com.masscode.gonews.data.Resource
 import com.masscode.gonews.databinding.ActivityHomeBinding
 import com.masscode.gonews.ui.adapter.ArticleAdapter
 import com.masscode.gonews.ui.base.ViewModelFactory
+import com.masscode.gonews.ui.detail.DetailActivity
+import com.masscode.gonews.ui.detail.DetailActivity.Companion.EXTRA_DATA
 import timber.log.Timber
 
 class HomeActivity : AppCompatActivity() {
@@ -21,6 +24,13 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val articleAdapter = ArticleAdapter()
+        articleAdapter.onItemClick = { selectedData ->
+            val intent = Intent(this, DetailActivity::class.java).apply {
+                putExtra(EXTRA_DATA, selectedData)
+            }
+            startActivity(intent)
+        }
+
         val factory = ViewModelFactory.getInstance(this)
 
         homeViewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java).apply {
