@@ -4,12 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.masscode.gonews.data.source.local.entity.ArticleEntity
+import com.masscode.gonews.data.source.local.entity.UserEntity
 
-@Database(entities = [ArticleEntity::class], version = 1, exportSchema = false)
+@Database(entities = [UserEntity::class], version = 1, exportSchema = false)
 abstract class ArticleDatabase : RoomDatabase() {
 
-    abstract fun articleDao(): ArticleDao
+    abstract fun articleDao(): UserDao
 
     companion object {
         @Volatile

@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.masscode.gonews.di.Injection
-import com.masscode.gonews.domain.usecase.ArticleUseCase
+import com.masscode.gonews.domain.usecase.UserUseCase
 import com.masscode.gonews.ui.home.HomeViewModel
 
-class ViewModelFactory private constructor(private val articleUseCase: ArticleUseCase) :
+class ViewModelFactory private constructor(private val userUseCase: UserUseCase) :
     ViewModelProvider.NewInstanceFactory() {
 
     companion object {
@@ -26,7 +26,7 @@ class ViewModelFactory private constructor(private val articleUseCase: ArticleUs
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
-                HomeViewModel(articleUseCase) as T
+                HomeViewModel(userUseCase) as T
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }

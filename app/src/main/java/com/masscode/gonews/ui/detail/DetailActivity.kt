@@ -2,9 +2,8 @@ package com.masscode.gonews.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.masscode.gonews.R
 import com.masscode.gonews.databinding.ActivityDetailBinding
-import com.masscode.gonews.domain.model.Article
+import com.masscode.gonews.domain.model.User
 
 class DetailActivity : AppCompatActivity() {
 
@@ -17,7 +16,7 @@ class DetailActivity : AppCompatActivity() {
         val binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val data = intent.getParcelableExtra<Article>(EXTRA_DATA)
+        val data = intent.getParcelableExtra<User>(EXTRA_DATA)
         binding.textView.text = data?.username
     }
 }

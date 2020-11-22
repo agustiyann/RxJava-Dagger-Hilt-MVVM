@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.masscode.gonews.data.Resource
 import com.masscode.gonews.databinding.ActivityHomeBinding
-import com.masscode.gonews.ui.adapter.ArticleAdapter
+import com.masscode.gonews.ui.adapter.ListAdapter
 import com.masscode.gonews.ui.base.ViewModelFactory
 import com.masscode.gonews.ui.detail.DetailActivity
 import com.masscode.gonews.ui.detail.DetailActivity.Companion.EXTRA_DATA
@@ -23,7 +23,7 @@ class HomeActivity : AppCompatActivity() {
         val binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val articleAdapter = ArticleAdapter()
+        val articleAdapter = ListAdapter()
         articleAdapter.onItemClick = { selectedData ->
             val intent = Intent(this, DetailActivity::class.java).apply {
                 putExtra(EXTRA_DATA, selectedData)

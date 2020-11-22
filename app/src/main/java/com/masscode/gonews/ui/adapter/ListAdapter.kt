@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.masscode.gonews.R
 import com.masscode.gonews.databinding.ItemListNewsBinding
-import com.masscode.gonews.domain.model.Article
+import com.masscode.gonews.domain.model.User
 
-class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ListViewHolder>() {
+class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
-    private var listData = ArrayList<Article>()
-    var onItemClick: ((Article) -> Unit)? = null
+    private var listData = ArrayList<User>()
+    var onItemClick: ((User) -> Unit)? = null
 
-    fun setData(newListData: List<Article>?) {
+    fun setData(newListData: List<User>?) {
         if (newListData == null) return
         listData.clear()
         listData.addAll(newListData)
@@ -36,7 +36,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ListViewHolder>() {
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemListNewsBinding.bind(itemView)
-        fun bind(data: Article) {
+        fun bind(data: User) {
             with(binding) {
                 article = data
                 executePendingBindings()

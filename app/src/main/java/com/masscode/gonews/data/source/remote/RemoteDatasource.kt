@@ -2,7 +2,7 @@ package com.masscode.gonews.data.source.remote
 
 import com.masscode.gonews.data.source.remote.network.ApiResponse
 import com.masscode.gonews.data.source.remote.network.ApiService
-import com.masscode.gonews.data.source.remote.response.ArticleResponse
+import com.masscode.gonews.data.source.remote.response.UserResponse
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.BackpressureStrategy
 import io.reactivex.rxjava3.core.Flowable
@@ -22,8 +22,8 @@ class RemoteDatasource private constructor(private val apiService: ApiService) {
             }
     }
 
-    fun getAllArticles(): Flowable<ApiResponse<List<ArticleResponse>>> {
-        val resultData = PublishSubject.create<ApiResponse<List<ArticleResponse>>>()
+    fun getAllArticles(): Flowable<ApiResponse<List<UserResponse>>> {
+        val resultData = PublishSubject.create<ApiResponse<List<UserResponse>>>()
         val client = apiService.getTopHeadlines()
 
         client

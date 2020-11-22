@@ -7,7 +7,7 @@
 
         <variable
             name="article"
-            type="com.masscode.gonews.domain.model.Article" />
+            type="com.masscode.gonews.domain.model.User" />
 
     </data>
 

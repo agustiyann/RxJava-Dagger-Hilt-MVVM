@@ -1,15 +1,15 @@
 package com.masscode.gonews.utils
 
-import com.masscode.gonews.data.source.local.entity.ArticleEntity
-import com.masscode.gonews.data.source.remote.response.ArticleResponse
-import com.masscode.gonews.domain.model.Article
+import com.masscode.gonews.data.source.local.entity.UserEntity
+import com.masscode.gonews.data.source.remote.response.UserResponse
+import com.masscode.gonews.domain.model.User
 
 object DataMapper {
 
-    fun mapResponsesToEntities(input: List<ArticleResponse>): List<ArticleEntity> {
-        val articleList = ArrayList<ArticleEntity>()
+    fun mapResponsesToEntities(input: List<UserResponse>): List<UserEntity> {
+        val articleList = ArrayList<UserEntity>()
         input.map {
-            val article = ArticleEntity(
+            val article = UserEntity(
                 id = it.id,
                 username = it.username,
                 avatar = it.avatar,
@@ -21,9 +21,9 @@ object DataMapper {
         return articleList
     }
 
-    fun mapEntitiesToDomain(input: List<ArticleEntity>): List<Article> =
+    fun mapEntitiesToDomain(input: List<UserEntity>): List<User> =
         input.map {
-            Article(
+            User(
                 id = it.id,
                 username = it.username,
                 avatar = it.avatar,
@@ -32,7 +32,7 @@ object DataMapper {
             )
         }
 
-    fun mapDomainToEntity(input: Article) = ArticleEntity(
+    fun mapDomainToEntity(input: User) = UserEntity(
         id = input.id,
         username = input.username,
         avatar = input.avatar,

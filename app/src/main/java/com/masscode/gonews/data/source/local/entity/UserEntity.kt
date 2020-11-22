@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "users")
-data class ArticleEntity(
+data class UserEntity(
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "id")

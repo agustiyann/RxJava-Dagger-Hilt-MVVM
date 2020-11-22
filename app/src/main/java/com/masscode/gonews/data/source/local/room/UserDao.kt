@@ -4,16 +4,16 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.masscode.gonews.data.source.local.entity.ArticleEntity
+import com.masscode.gonews.data.source.local.entity.UserEntity
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 
 @Dao
-interface ArticleDao {
+interface UserDao {
 
     @Query("SELECT * FROM users")
-    fun getAllArticles(): Flowable<List<ArticleEntity>>
+    fun getAllArticles(): Flowable<List<UserEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertArticles(articles: List<ArticleEntity>): Completable
+    fun insertArticles(users: List<UserEntity>): Completable
 }
