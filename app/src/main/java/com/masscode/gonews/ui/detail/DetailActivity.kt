@@ -17,6 +17,6 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val data = intent.getParcelableExtra<User>(EXTRA_DATA)
-        binding.textView.text = data?.username
+        binding.user = data
     }
 }

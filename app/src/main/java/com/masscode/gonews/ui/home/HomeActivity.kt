@@ -52,7 +52,7 @@ class HomeActivity : AppCompatActivity() {
             })
         }
 
-        binding.rvArticle.apply {
+        binding.rvUser.apply {
             layoutManager = LinearLayoutManager(this@HomeActivity)
             setHasFixedSize(true)
             adapter = articleAdapter

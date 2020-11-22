@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="article"
+            name="user"
             type="com.masscode.gonews.domain.model.User" />
 
     </data>
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content">
 
         <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/roundedImageView"
+            android:id="@+id/image"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="16dp"
@@ -25,7 +25,7 @@
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:loadImage="@{article.avatar}"
+            app:loadImage="@{user.avatar}"
             app:riv_corner_radius="16dp"
             app:riv_mutate_background="true" />
 
@@ -38,9 +38,9 @@
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@{article.username}"
+            android:text="@{user.username}"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintEnd_toStartOf="@+id/roundedImageView"
+            app:layout_constraintEnd_toStartOf="@+id/image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Title" />
@@ -54,10 +54,10 @@
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@{article.job}"
+            android:text="@{user.job}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toTopOf="@+id/slogan"
-            app:layout_constraintEnd_toStartOf="@+id/roundedImageView"
+            app:layout_constraintEnd_toStartOf="@+id/image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username"
             tools:text="Software Engineer" />
@@ -70,10 +70,10 @@
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="@{article.slogan}"
+            android:text="@{user.slogan}"
             android:textStyle="italic"
-            app:layout_constraintBottom_toBottomOf="@+id/roundedImageView"
-            app:layout_constraintEnd_toStartOf="@+id/roundedImageView"
+            app:layout_constraintBottom_toBottomOf="@+id/image"
+            app:layout_constraintEnd_toStartOf="@+id/image"
             app:layout_constraintStart_toStartOf="parent" />
 
         <View

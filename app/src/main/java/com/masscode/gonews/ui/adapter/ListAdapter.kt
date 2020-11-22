@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.masscode.gonews.R
-import com.masscode.gonews.databinding.ItemListNewsBinding
+import com.masscode.gonews.databinding.ItemListUserBinding
 import com.masscode.gonews.domain.model.User
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
@@ -22,7 +22,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         return ListViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_list_news, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_list_user, parent, false)
         )
     }
 
@@ -35,10 +35,10 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     }
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = ItemListNewsBinding.bind(itemView)
+        private val binding = ItemListUserBinding.bind(itemView)
         fun bind(data: User) {
             with(binding) {
-                article = data
+                user = data
                 executePendingBindings()
                 root.setOnClickListener { onItemClick?.invoke(listData[adapterPosition]) }
             }
