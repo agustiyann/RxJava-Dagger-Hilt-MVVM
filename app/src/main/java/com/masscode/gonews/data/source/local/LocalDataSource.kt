@@ -3,17 +3,9 @@ package com.masscode.gonews.data.source.local
 import com.masscode.gonews.data.source.local.entity.UserEntity
 import com.masscode.gonews.data.source.local.room.UserDao
 import io.reactivex.rxjava3.core.Flowable
+import javax.inject.Inject
 
-class LocalDataSource private constructor(private val userDao: UserDao) {
-
-    companion object {
-        private var instance: LocalDataSource? = null
-
-        fun getInstance(userDao: UserDao): LocalDataSource =
-            instance ?: synchronized(this) {
-                instance ?: LocalDataSource(userDao)
-            }
-    }
+class LocalDataSource @Inject constructor(private val userDao: UserDao) {
 
     fun getAllArticles(): Flowable<List<UserEntity>> = userDao.getAllArticles()
 

@@ -13,6 +13,9 @@ buildscript {
     ext.multidex_version            = "2.0.1"
     ext.rxjava_version              = "3.0.7"
     ext.rxandroid_version           = "3.0.0"
+    ext.dagger_version              = "2.29.1"
+    ext.activity_ktx_version        = "1.1.0"
+    ext.fragment_ktx_version        = "1.2.5"
     repositories {
         google()
         jcenter()

@@ -11,26 +11,13 @@ import com.masscode.gonews.utils.DataMapper
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
-class UserRepository private constructor(
+class UserRepository @Inject constructor(
     private val remoteDatasource: RemoteDatasource,
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
 ) : IUserRepository {
-
-    companion object {
-        @Volatile
-        private var instance: UserRepository? = null
-
-        fun getInstance(
-            remoteData: RemoteDatasource,
-            localData: LocalDataSource,
-            appExecutors: AppExecutors
-        ): UserRepository =
-            instance ?: synchronized(this) {
-                instance ?: UserRepository(remoteData, localData, appExecutors)
-            }
-    }
 
     override fun getAllArticles(): Flowable<Resource<List<User>>> =
         object : NetworkBoundResource<List<User>, List<UserResponse>>(appExecutors) {

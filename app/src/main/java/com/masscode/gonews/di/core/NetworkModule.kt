@@ -1,7 +1,10 @@
-package com.masscode.gonews.data.source.remote.network
+package com.masscode.gonews.di.core
 
+import com.masscode.gonews.data.source.remote.network.ApiService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import dagger.Module
+import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -9,8 +12,11 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
-object ApiConfig {
-    private fun provideOkHttpClient(): OkHttpClient {
+@Module
+class NetworkModule {
+
+    @Provides
+    fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .connectTimeout(120, TimeUnit.SECONDS)
@@ -18,14 +24,15 @@ object ApiConfig {
             .build()
     }
 
-    fun provideApiService(): ApiService {
+    @Provides
+    fun provideApiService(client: OkHttpClient): ApiService {
         val moshi: Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://my-json-server.typicode.com/agustiyann/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-            .client(provideOkHttpClient())
+            .client(client)
             .build()
         return retrofit.create(ApiService::class.java)
     }

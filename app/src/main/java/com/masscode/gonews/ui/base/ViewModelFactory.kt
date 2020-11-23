@@ -1,26 +1,15 @@
 package com.masscode.gonews.ui.base
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.masscode.gonews.di.Injection
+import com.masscode.gonews.di.app.AppScope
 import com.masscode.gonews.domain.usecase.UserUseCase
 import com.masscode.gonews.ui.home.HomeViewModel
+import javax.inject.Inject
 
-class ViewModelFactory private constructor(private val userUseCase: UserUseCase) :
+@AppScope
+class ViewModelFactory @Inject constructor(private val userUseCase: UserUseCase) :
     ViewModelProvider.NewInstanceFactory() {
-
-    companion object {
-        @Volatile
-        private var instance: ViewModelFactory? = null
-
-        fun getInstance(context: Context): ViewModelFactory =
-            instance ?: synchronized(this) {
-                instance ?: ViewModelFactory(
-                    Injection.provideArticleUseCase(context)
-                )
-            }
-    }
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

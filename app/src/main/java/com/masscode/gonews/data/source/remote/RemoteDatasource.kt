@@ -9,18 +9,9 @@ import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.PublishSubject
 import timber.log.Timber
+import javax.inject.Inject
 
-class RemoteDatasource private constructor(private val apiService: ApiService) {
-
-    companion object {
-        @Volatile
-        private var instance: RemoteDatasource? = null
-
-        fun getInstance(service: ApiService): RemoteDatasource =
-            instance ?: synchronized(this) {
-                instance ?: RemoteDatasource(service)
-            }
-    }
+class RemoteDatasource @Inject constructor(private val apiService: ApiService) {
 
     fun getAllArticles(): Flowable<ApiResponse<List<UserResponse>>> {
         val resultData = PublishSubject.create<ApiResponse<List<UserResponse>>>()
