@@ -8,6 +8,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 
 @Module
@@ -16,7 +17,7 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(context: Context): UserDatabase = Room.databaseBuilder(
+    fun provideDatabase(@ApplicationContext context: Context): UserDatabase = Room.databaseBuilder(
         context,
         UserDatabase::class.java, "Article.db"
     ).fallbackToDestructiveMigration().build()
