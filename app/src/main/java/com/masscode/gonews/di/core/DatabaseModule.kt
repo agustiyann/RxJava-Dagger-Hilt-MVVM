@@ -6,9 +6,12 @@ import com.masscode.gonews.data.source.local.room.UserDao
 import com.masscode.gonews.data.source.local.room.UserDatabase
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
 
 @Module
+@InstallIn(ApplicationComponent::class)
 class DatabaseModule {
 
     @Singleton
