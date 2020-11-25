@@ -6,27 +6,20 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.masscode.gonews.MyApplication
 import com.masscode.gonews.data.Resource
 import com.masscode.gonews.databinding.ActivityHomeBinding
 import com.masscode.gonews.ui.adapter.ListAdapter
-import com.masscode.gonews.ui.base.ViewModelFactory
 import com.masscode.gonews.ui.detail.DetailActivity
 import com.masscode.gonews.ui.detail.DetailActivity.Companion.EXTRA_DATA
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
-import javax.inject.Inject
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var factory: ViewModelFactory
-
-    private val homeViewModel: HomeViewModel by viewModels {
-        factory
-    }
+    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         val binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
