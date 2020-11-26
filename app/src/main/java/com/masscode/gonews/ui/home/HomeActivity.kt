@@ -6,7 +6,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.masscode.gonews.data.Resource
+import com.masscode.gonews.domain.usecase.Resource
 import com.masscode.gonews.databinding.ActivityHomeBinding
 import com.masscode.gonews.ui.adapter.ListAdapter
 import com.masscode.gonews.ui.detail.DetailActivity
@@ -36,12 +36,12 @@ class HomeActivity : AppCompatActivity() {
             Timber.d(articles.data?.size.toString())
             if (articles != null) {
                 when (articles) {
-                    is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
-                    is Resource.Success -> {
+                    is com.masscode.gonews.domain.usecase.Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
+                    is com.masscode.gonews.domain.usecase.Resource.Success -> {
                         binding.progressBar.visibility = View.GONE
                         articleAdapter.setData(articles.data)
                     }
-                    is Resource.Error -> {
+                    is com.masscode.gonews.domain.usecase.Resource.Error -> {
                         binding.progressBar.visibility = View.GONE
                         binding.viewError.visibility = View.VISIBLE
                     }

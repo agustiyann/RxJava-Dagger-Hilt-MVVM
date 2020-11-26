@@ -1,4 +1,4 @@
-package com.masscode.gonews.utils
+package com.masscode.gonews.data.utils
 
 import android.os.Handler
 import android.os.Looper

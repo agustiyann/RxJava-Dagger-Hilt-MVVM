@@ -1,7 +1,8 @@
 package com.masscode.gonews.data
 
 import com.masscode.gonews.data.source.remote.network.ApiResponse
-import com.masscode.gonews.utils.AppExecutors
+import com.masscode.gonews.data.utils.AppExecutors
+import com.masscode.gonews.domain.usecase.Resource
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.BackpressureStrategy
 import io.reactivex.rxjava3.core.Flowable

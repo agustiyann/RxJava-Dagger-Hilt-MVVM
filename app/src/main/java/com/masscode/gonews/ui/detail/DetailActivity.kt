@@ -16,7 +16,7 @@ class DetailActivity : AppCompatActivity() {
         val binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val data = intent.getParcelableExtra<User>(EXTRA_DATA)
+        val data = intent.getParcelableExtra<com.masscode.gonews.domain.model.User>(EXTRA_DATA)
         binding.user = data
     }
 }

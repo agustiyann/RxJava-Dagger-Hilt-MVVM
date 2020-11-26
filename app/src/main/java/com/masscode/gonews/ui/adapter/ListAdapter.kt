@@ -10,10 +10,10 @@ import com.masscode.gonews.domain.model.User
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
-    private var listData = ArrayList<User>()
-    var onItemClick: ((User) -> Unit)? = null
+    private var listData = ArrayList<com.masscode.gonews.domain.model.User>()
+    var onItemClick: ((com.masscode.gonews.domain.model.User) -> Unit)? = null
 
-    fun setData(newListData: List<User>?) {
+    fun setData(newListData: List<com.masscode.gonews.domain.model.User>?) {
         if (newListData == null) return
         listData.clear()
         listData.addAll(newListData)
@@ -36,7 +36,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemListUserBinding.bind(itemView)
-        fun bind(data: User) {
+        fun bind(data: com.masscode.gonews.domain.model.User) {
             with(binding) {
                 user = data
                 executePendingBindings()
