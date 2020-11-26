@@ -12,5 +12,5 @@ import dagger.hilt.android.components.ApplicationComponent
 abstract class RepositoryModule {
 
     @Binds
-    abstract fun provideRepository(userRepository: UserRepository): IUserRepository
+    abstract fun provideRepository(userRepository: UserRepository): com.masscode.gonews.domain.repository.IUserRepository
 }

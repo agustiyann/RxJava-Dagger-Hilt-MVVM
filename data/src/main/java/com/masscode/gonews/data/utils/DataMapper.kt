@@ -1,4 +1,4 @@
-package com.masscode.gonews.utils
+package com.masscode.gonews.data.utils
 
 import com.masscode.gonews.data.source.local.entity.UserEntity
 import com.masscode.gonews.data.source.remote.response.UserResponse

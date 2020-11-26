@@ -5,6 +5,6 @@ import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.ViewModel
 import com.masscode.gonews.domain.usecase.UserUseCase
 
-class HomeViewModel @ViewModelInject constructor(userUseCase: UserUseCase) : ViewModel() {
+class HomeViewModel @ViewModelInject constructor(userUseCase: com.masscode.gonews.domain.usecase.UserUseCase) : ViewModel() {
     val articles = LiveDataReactiveStreams.fromPublisher(userUseCase.getAllArticles())
 }
