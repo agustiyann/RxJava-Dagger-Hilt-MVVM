@@ -1,6 +1,6 @@
 # RxJava - Dagger - Hilt - MVVM
-[![GitHub license](https://img.shields.io/github/license/agustiyann/RxJava-Dagger-Hilt-MVVM)](https://github.com/agustiyann/RxJava-Dagger-Hilt-MVVM/blob/main/LICENSE)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/agustiyann/RxJava-Dagger-Hilt-MVVM/Android%20CI?logo=github)](https://github.com/agustiyann/RxJava-Dagger-Hilt-MVVM/actions)
+[![GitHub license](https://img.shields.io/github/license/agustiyann/RxJava-Dagger-Hilt-MVVM)](https://github.com/agustiyann/RxJava-Dagger-Hilt-MVVM/blob/main/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/agustiyann/RxJava-Dagger-Hilt-MVVM)](https://github.com/agustiyann/RxJava-Dagger-Hilt-MVVM/issues)
 [![Kotlin](https://img.shields.io/badge/Language-Kotlin-blue?logo=kotlin)](https://kotlinlang.org)
 [![GitHub](https://img.shields.io/badge/GitHub-agustiyann-%2300b894?logo=github)](https://github.com/agustiyann)
