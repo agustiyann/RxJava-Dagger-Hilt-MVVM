@@ -15,6 +15,7 @@
 - [Material-Components](https://github.com/material-components/material-components-android)
 - [Timber](https://github.com/JakeWharton/timber)
 - [Coil](https://coil-kt.github.io/coil/)
+- [Multidex](https://developer.android.com/studio/build/multidex)
 - [RxJava3](https://github.com/ReactiveX/RxJava)
 - [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 
